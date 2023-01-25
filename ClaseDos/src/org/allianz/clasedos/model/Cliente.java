@@ -8,6 +8,8 @@ public class Cliente {
 	private int numerocl;
 	private String nombre;
 	private String apellido;
+	private double deuda = 0;
+	private double saldo = 0;
 	
 	public Cliente(String documento, String nombre, String apellido) {
 		this.nombre = nombre;
@@ -15,6 +17,14 @@ public class Cliente {
 		this.documento = documento;
 		this.numerocl = Cliente.PROXIMO_NUMEROCL;
 		Cliente.PROXIMO_NUMEROCL++;
+	}
+	
+	public Cliente(int numeroCl, String documento, String nombre, String apellido) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.documento = documento;
+		this.numerocl = numeroCl;
+		Cliente.PROXIMO_NUMEROCL = numeroCl + 1;
 	}
 	
 	public int getId() {
@@ -46,4 +56,20 @@ public class Cliente {
     	return "("+ this.getNumerocl() +")"+  this.getNombre() + " " + this.getApellido() + "- DNI: " + this.getDocumento();
     	
     }
+
+	public double getDeuda() {
+		return deuda;
+	}
+
+	public void setDeuda(double deuda) {
+		this.deuda = deuda;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
 }

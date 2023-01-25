@@ -5,6 +5,8 @@ import java.util.function.Consumer;
 
 import  org.allianz.clasedos.model.*;
 import org.allianz.clasedos.repository.*;
+import org.allianz.clasedos.service.*;
+
 
 public class Program {
 
@@ -39,7 +41,7 @@ public class Program {
         
 		//Aqui estoy declarando una variable del tipo de la interfaz
 		//pero al momento de instanciar utilizo una clase que implementa la interfaz
-        ClienteRepository repo = new ClienteMockRepository();        
+        /*ClienteRepository repo = new ClienteMockRepository();        
         repo.save(new Cliente("1234","Elon","Musk"));
         repo.save(new Cliente("3434","Lionel","Messi"));
         repo.save(new Cliente("6554","Fernando","Alonso"));
@@ -68,7 +70,43 @@ public class Program {
         System.out.println("Vamos a eliminar al cliente con ID 4");
         repo.delete(4);
         System.out.println("La lista queda");
-        repo.findAll().forEach(System.out::println);
+        repo.findAll().forEach(System.out::println);*/
+		
+		/*
+		//Creo unos datos por defecto para probar el servicio
+		ClienteMockRepository repo = new ClienteMockRepository(); 
+		//Tambien es valido hacer
+		//ClienteRepository repo = new ClienteMockRepository();
+		Cliente conDeuda = new Cliente("DNI-1","Pedro","Moroso");
+		conDeuda.setDeuda(1000);
+		repo.save(conDeuda);
+		
+		Cliente sinDeuda = new Cliente("DNI-2", "Juan", "Aldia");
+		sinDeuda.setSaldo(100); 
+		repo.save(sinDeuda);
+
+		//Estoy "inyectando la dependecia" entre el servicio y el repositorio
+		AseguradoraServiceInterface service = new AseguradoraService(repo);
+		System.out.println("La deuda de " + conDeuda);
+		System.out.println(service.calcularDeuda(100));
+		System.out.println("La deuda de " + sinDeuda);
+		System.out.println(service.calcularDeuda(101));
+		
+		System.out.println("Ahora ambos pagan 1000 euros");
+		service.pagar(100, 1000);
+		service.pagar(101, 1000);
+		System.out.println(conDeuda);
+		System.out.println("Deuda: " + service.calcularDeuda(100) + " Saldo: " + service.saldoAFavor(100));
+		System.out.println(sinDeuda);
+		System.out.println("Deuda: " + service.calcularDeuda(101) + " Saldo: " + service.saldoAFavor(101));
+		*/
+		
+		ClienteRepository repo = new ClienteFileRepository();
+		//repo.save(new Cliente("DNI1","Juan", "Perez"));
+		//Cliente c = repo.findById(0);
+		//System.out.println(c);
+		repo.findAll().forEach(System.out::println);
+		
 	}
 
 }
