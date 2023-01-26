@@ -1,6 +1,7 @@
 package org.allianz.clasedos.repository;
 
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import org.allianz.clasedos.model.*;
@@ -62,7 +63,7 @@ public class ClienteFileRepository implements ClienteRepository {
 
 	@Override
 	public Cliente findByNumerocl(int numerocl) {
-		return this.findAll().stream().filter(c -> c.getNumerocl()==numerocl).findFirst().orElseThrow();
+		return this.findAll().stream().filter(c -> c.getNumerocl()==numerocl).findFirst().orElse(null);
 	}
 
 	@Override

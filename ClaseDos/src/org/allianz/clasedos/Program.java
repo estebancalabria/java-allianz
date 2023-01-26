@@ -101,12 +101,25 @@ public class Program {
 		System.out.println("Deuda: " + service.calcularDeuda(101) + " Saldo: " + service.saldoAFavor(101));
 		*/
 		
-		ClienteRepository repo = new ClienteFileRepository();
+		/*ClienteRepository repo = new ClienteFileRepository();
 		//repo.save(new Cliente("DNI1","Juan", "Perez"));
 		//Cliente c = repo.findById(0);
 		//System.out.println(c);
-		repo.findAll().forEach(System.out::println);
+		repo.findAll().forEach(System.out::println);*/
 		
+		ClienteRepository repo = new ClienteDbRepository();
+		//Cliente elon = new Cliente("1234","Elon","Musk");
+		//repo.save(elon);
+		
+		//Cliente mark = new Cliente(302,"534","Mark","Zuckemberg");
+		//repo.save(mark);
+		
+		//repo.findAll().forEach(System.out::println);
+		
+		Cliente c = repo.findById(3);
+		System.out.println(c);
+		
+		System.out.println("Programa ejecutado Ok");
 	}
 
 }
