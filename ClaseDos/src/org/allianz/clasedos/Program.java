@@ -115,9 +115,14 @@ public class Program {
 		//repo.save(mark);
 		
 		//repo.findAll().forEach(System.out::println);
-		
-		Cliente c = repo.findById(3);
+		try {
+		Cliente c = repo.findById(1);
 		System.out.println(c);
+		}catch(Error e) {
+			if (e.getMessage().contains("Not FOUND")) {
+				System.out.println("N");
+			}
+		}
 		
 		System.out.println("Programa ejecutado Ok");
 	}
