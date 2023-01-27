@@ -116,12 +116,15 @@ public class Program {
 		
 		//repo.findAll().forEach(System.out::println);
 		try {
-		Cliente c = repo.findById(1);
-		System.out.println(c);
+			System.out.println("Antes de la modificacion");
+			repo.findAll().forEach(System.out::println);
+			Cliente c = repo.findById(1);
+			c.setDeuda(c.getDeuda() + 1000);
+			repo.update(c);
+			System.out.println("Despues de la modificacion");
+			repo.findAll().forEach(System.out::println);
 		}catch(Error e) {
-			if (e.getMessage().contains("Not FOUND")) {
-				System.out.println("N");
-			}
+			System.out.println("Error " + e.getMessage());
 		}
 		
 		System.out.println("Programa ejecutado Ok");

@@ -53,7 +53,10 @@ public class Cliente {
 	
     @Override
     public String toString() {
-    	return "("+ this.getNumerocl() +")"+  this.getNombre() + " " + this.getApellido() + "- DNI: " + this.getDocumento();
+    	return "("+ this.getNumerocl() +")"
+                +  this.getNombre() + " " + this.getApellido() 
+                + "- DNI: " + this.getDocumento()
+                +"[Deuda: "+ this.getDeuda()+"]";
     	
     }
 

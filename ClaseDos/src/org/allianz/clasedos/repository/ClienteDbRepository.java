@@ -57,13 +57,43 @@ public class ClienteDbRepository implements ClienteRepository {
 
 	@Override
 	public void update(Cliente cliente) {
-		// TODO Auto-generated method stub
-		
+		try {
+			Connection connection = DriverManager.getConnection(url);
+			try {
+				String update = "UPDATE Cliente "+
+								"SET deuda=?, "+
+								"saldo=? "+
+								"WHERE id=?";
+				PreparedStatement statement = connection.prepareStatement(update);
+                statement.setDouble(1, cliente.getDeuda());
+                statement.setDouble(2, cliente.getSaldo());
+                statement.setInt(3, cliente.getId());
+                statement.executeUpdate();
+			}finally {
+				connection.close();
+			}
+		}
+		catch (Exception ex) {
+			throw new Error(ex.getMessage());
+		}	
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		try {
+			Connection connection = DriverManager.getConnection(url);
+			try {
+				String delete = "DELETE FROM Cliente WHERE id=?";
+				PreparedStatement statement = connection.prepareStatement(delete);
+                statement.setInt(1, id);
+                statement.executeUpdate();
+			}finally {
+				connection.close();
+			}
+		}
+		catch (Exception ex) {
+			throw new Error(ex.getMessage());
+		}	
 		
 	}
 
@@ -101,8 +131,34 @@ public class ClienteDbRepository implements ClienteRepository {
 
 	@Override
 	public Cliente findByNumerocl(int numerocl) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			Connection connection = DriverManager.getConnection(url);
+			try {
+				String sqlSelect = "Select id,documento, numerocl, nombre, apellido, deuda, saldo "+
+								   "from Cliente where numerocl="+numerocl;
+				Statement sql = connection.createStatement();
+				ResultSet resultSet = sql.executeQuery(sqlSelect);
+				if (resultSet.next()) {
+					Cliente c = new Cliente(
+								resultSet.getInt("numerocl"),
+								resultSet.getString("documento"),
+								resultSet.getString("nombre"),
+								resultSet.getString("apellido")
+							);
+					c.setId(resultSet.getInt("id"));
+					c.setDeuda(resultSet.getDouble("deuda"));
+					c.setSaldo(resultSet.getDouble("saldo"));
+					return c;
+				}
+				
+				throw new Error("Not FOUND");
+			}finally {
+				connection.close();
+			}
+		}
+		catch (Exception ex) {
+			throw new Error(ex.getMessage());
+		}			
 	}
 
 	@Override
