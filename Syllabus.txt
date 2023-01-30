@@ -30,6 +30,7 @@ Clase 3
       Inyeccion de dependencias mediante un repositorio de Archivos    
              
 Clase 4
+      Maejo de Liberias y jars...
       Acceso a datos mediante jdbc
             -Acceder a una base de datos mysql
             -Acceso a datos mediante un sqlite embebido 
@@ -38,6 +39,7 @@ Clase 4
       Repositorio de Datos (Revisitar la Injeccion de dependencias)
       Intro a JPA.
       Perform multiple operations on database tables including create, read, update and delete using JDBC and JPA technology.
+
 
 Clase 5
       Seguir con JPA pero hablando de Maven e Spring Boot

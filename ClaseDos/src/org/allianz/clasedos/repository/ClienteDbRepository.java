@@ -194,5 +194,4 @@ public class ClienteDbRepository implements ClienteRepository {
 			throw new Error(ex.getMessage());
 		}			
 	}
-
 }
