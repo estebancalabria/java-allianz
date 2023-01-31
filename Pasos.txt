@@ -1,0 +1,42 @@
+PASOS
+
+1. Ir a Spring Intializ (https://start.spring.io/) y crear el proyecto y descargar el ZIP
+      1.1 Dependencias
+            -Spring Web
+            -JDBC (O JPA)
+            -Lombok
+            -...
+
+2. Descomprimir el Zip en el directorio del Workspace de Eclipse
+
+3. Importar el proyecto en Eclipse
+
+4. Configurar el proyecto
+       4.1 - Configurar Dependencias Adicionales y Agregar dependencias al POM
+                (Opcional) Configurar Conexion con la base de Datos
+       4.2 - Configurar el application.propeties para cada dependencia de Spring Boot que asi lo requiriera
+                Ej. Para Sqlite
+                       application.properties 
+                             spring.datasource.url=jdbc:sqlite:allianz.db
+
+5. Ejecutar el proyecto y verificar que funcione
+       5.1 Abrir en el navegaor en el localhost:8080 
+
+6. Crear de minima los 4 paquertes para dar soporte a la arquitectura del proyecto (OJO los nombres)
+         models
+         controllers
+         services
+         repository
+
+7. Crear la clase del Modelo y Agregarle los getters y setters (Mediante el eclipe o lombok)
+
+8. Definir el Repositorio (o Utilizar JPA)
+    8.1. Definir la Interfaz del Repositorio par el modelo
+    8.2. Generar una implementacion que se conecte con la base de datos
+
+9. Definir el Servicio
+    9.1. Definir la interfaz
+    9.2. Generaar la implementcion
+   
+
+10.Definir el Controlador... 
